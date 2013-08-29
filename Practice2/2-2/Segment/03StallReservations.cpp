@@ -34,14 +34,15 @@ void
 solve()
 {
     sort(p.begin(), p.end(), comp);
-    priority_queue<C,vector<C>,greater<C>   > que;
+    priority_queue<C,vector<C>,greater<C> > que;
     vector<int> alloc(N);
     int res = 0;
     que.push(C(p[0].t,++res));
-    alloc[0] = res;
+    alloc[p[0].n] = res;
     for (int i=1; i<p.size(); ++i) {
         C c = que.top();
         int num;
+        //stallを使いまわす場合
         if (p[i].s > c.first) {
             que.pop();
             que.push(C(p[i].t,c.second));
